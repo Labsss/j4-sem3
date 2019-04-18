@@ -7,20 +7,14 @@ class Application
   @@game_counter=0
 
   def initialize
-
-  @game = Game.new
-  
-  # boucle à 9 tours
-    
-  @game.status == 'on going'
-  @game.turn
-  @game.game_end
-  @game.new_round
-
-
-
-
-  
+    @game = Game.new
+    # initialisation d'une partie
+    @game.turn
+    # tour des joueurs
+    @game.game_end
+    # Message de fin de jeu
+    @game.new_round
+    #demande de rejouer ou partir
 
   end
 end

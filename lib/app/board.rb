@@ -24,13 +24,11 @@ class Board
 	end
 
 	def play_turn(board,current_player)
-		#TO DO : une méthode qui :
-		#1) demande au bon joueur ce qu'il souhaite faire
-    #2) change la BoardCase jouée en fonction de la valeur du joueur (X ou O)
+
     input_ko = true
     
     while input_ko
-      print "#{current_player.player_name}, quelle case souhaites-tu jouer ? "
+      print "#{current_player.player_name}, ton pion est le '#{current_player.player_token}', quelle case souhaites-tu jouer ? "
       case_to_play = gets.chomp.upcase
 
       case case_to_play
@@ -104,7 +102,6 @@ class Board
 	end
 
 	def victory?(board)
-		#TO DO : une méthode qui vérifie le plateau et indique s'il y a un vainqueur ou match nul
 		
 		# test combinaison horizontale
 		# si cases sont identiques

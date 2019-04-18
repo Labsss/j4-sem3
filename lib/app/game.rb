@@ -20,9 +20,7 @@ class Game
   end
 
   def turn
-    #TO DO : méthode faisant appelle aux méthodes des autres classes (notamment à l'instance de Board). 
-    #Elle affiche le plateau, demande au joueur ce qu'il joue, vérifie si un joueur a gagné, 
-    #passe au joueur suivant si la partie n'est pas finie.
+
     i=0
     while @status == 'on going' && i<9
       @current_player = @ary_player[i%2] # joueur alternativement index 0 ou 1
@@ -46,17 +44,22 @@ class Game
 
     puts "Voulez-vous faire une nouvelle partie (O/N) ?"
     choice = gets.chomp.upcase
-    case choice
+    until choice == 'O' || choice == 'N' 
+      case choice
       when 'O'
         @board = Board.new
       when 'N'
         puts "Ok, bye"
         exit
+      else 
+        puts "Choix erroné. Voulez-vous faire une nouvelle partie (O/N) ?"
+        choice = gets.chomp.upcase
+      end
     end
+
   end
 
   def game_end
-    # TO DO : permet l'affichage de fin de partie quand un vainqueur est détecté ou si il y a match nul
     if @status == 'on going'
       puts "Match nul"
     elsif @status == 'winner'
