@@ -23,7 +23,7 @@ class Board
     input_ko = true
     
     while input_ko
-      print "#{current_player.player_name}, ton pion est le '#{current_player.player_token}', quelle case souhaites-tu jouer ? "
+      print "#{current_player.player_name}, ton jeton est le '#{current_player.player_token}', quelle case souhaites-tu jouer ? "
       case_to_play = gets.chomp.upcase
 
       case case_to_play

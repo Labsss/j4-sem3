@@ -20,6 +20,7 @@ class Player
   end
 
   def gets_token
+    
     print "Quel jeton souhaites-tu ? (X ou O) "
     token = gets.chomp.upcase
     while token != "X" && token != "O"

@@ -11,11 +11,22 @@ class Game
     @player_1 = Player.new
     @player_2 = Player.new
     @ary_player = [@player_1,@player_2]
-    @player_1.show_state
-    @player_2.show_state
     @status = 'on going'
 
+    # check du type de jeton
+    if @player_1.player_token == @player_2.player_token
+      puts "Attention, j'ai changé vos jetons car ils étaient identiques"
+      if @player_1.player_token == 'X'
+        @player_2.player_token = 'O'
+      elsif @player_1.player_token == 'O'
+        @player_2.player_token = 'X'
+      end
+    end
+    @player_1.show_state
+    @player_2.show_state
+    # init du damier
     @board = Board.new
+    #affiche le damier
     Show.new.show_board(@board)
   end
 
