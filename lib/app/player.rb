@@ -13,7 +13,6 @@ class Player
 
   def show_state
     puts "Le joueur #{@player_name} joue avec le jeton '#{@player_token}'"
-    
   end
 
 end
