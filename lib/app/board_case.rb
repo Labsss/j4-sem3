@@ -7,9 +7,5 @@ class BoardCase
 		@token = token
 		@case_id = case_id
 	end
-
-	def change_state_case
-
-	end
 	
 end

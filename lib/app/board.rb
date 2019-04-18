@@ -1,6 +1,6 @@
 
 require_relative 'board_case'
-require 'pry'
+
 class Board
 	#TO DO : la classe a 1 attr_accessor : un array/hash qui contient les BoardCases.
 	#Optionnellement on peut aussi lui rajouter un autre sous le nom @count_turn pour compter le nombre de coups joué
@@ -26,81 +26,142 @@ class Board
 	def play_turn(board,current_player)
 		#TO DO : une méthode qui :
 		#1) demande au bon joueur ce qu'il souhaite faire
-		#2) change la BoardCase jouée en fonction de la valeur du joueur (X ou O)
+    #2) change la BoardCase jouée en fonction de la valeur du joueur (X ou O)
+    input_ko = true
+    
+    while input_ko
+      print "#{current_player.player_name}, quelle case souhaites-tu jouer ? "
+      case_to_play = gets.chomp.upcase
 
-		print "#{current_player.player_name}, quelle case souhaites-tu jouer ? "
-    case_to_play = gets.chomp
-
-    case case_to_play
-    when "A1"
-        if board.ary_boardcase[0].token = '.'
-            board.ary_boardcase[0].token  = current_player.player_token
-        else
-            puts "Case déjà occupée"
-        end
-        #faire un truc
-    when "A2"
-        if board.ary_boardcase[1].token = '.'
-            board.ary_boardcase[1].token  = current_player.player_token
-        else
-            puts "Case déjà occupée"
-        end
-    when "A3"
-        if board.ary_boardcase[2].token = '.'
-            board.ary_boardcase[2].token  = current_player.player_token
-        else
-            puts "Case déjà occupée"
-        end
-        #faire un truc
-    when "B1"
-        if board.ary_boardcase[3].token = '.'
-            board.ary_boardcase[3].token  = current_player.player_token
-        else
-            puts "Case déjà occupée"
-        end
-        #faire un truc
-    when "B2"
-        if board.ary_boardcase[4].token = '.'
-            board.ary_boardcase[4].token  = current_player.player_token
-        else
-            puts "Case déjà occupée"
-        end
-        #faire un truc
-    when "B3"
-        if board.ary_boardcase[5].token = '.'
-            board.ary_boardcase[5].token  = current_player.player_token
-        else
-            puts "Case déjà occupée"
-        end
-        #faire un truc
-    when "C1"
-        if board.ary_boardcase[6].token = '.'
-            board.ary_boardcase[6].token  = current_player.player_token
-        else
-            puts "Case déjà occupé"
-        end
-        #faire un truc
-    when "C2"
-        if board.ary_boardcase[7].token = '.'
-            board.ary_boardcase[7].token  = current_player.player_token
-        else
-            puts "Case déjà occupé"
-        end
-        #faire un truc
-    when "C3"
-        if board.ary_boardcase[8].token = '.'
-            board.ary_boardcase[8].token  = current_player.player_token
-        else
-            puts "Case déjà occupé"
-        end
-        #faire un truc
-    else 
-        puts "erreur de case"
+      case case_to_play
+      when "A1"
+          if board.ary_boardcase[0].token == '.'
+              board.ary_boardcase[0].token  = current_player.player_token
+              input_ko = false
+          else
+              puts "Case déjà occupée. Réessayes avec la bonne case !"
+          end
+      when "A2"
+          if board.ary_boardcase[1].token == '.'
+              board.ary_boardcase[1].token  = current_player.player_token
+              input_ko = false
+          else
+              puts "Case déjà occupée. Réessayes avec la bonne case !"
+          end
+      when "A3"
+          if board.ary_boardcase[2].token == '.'
+              board.ary_boardcase[2].token  = current_player.player_token
+              input_ko = false
+          else
+              puts "Case déjà occupée. Réessayes avec la bonne case !"
+          end
+      when "B1"
+          if board.ary_boardcase[3].token == '.'
+              board.ary_boardcase[3].token  = current_player.player_token
+              input_ko = false
+          else
+              puts "Case déjà occupée. Réessayes avec la bonne case !"
+          end
+      when "B2"
+          if board.ary_boardcase[4].token == '.'
+              board.ary_boardcase[4].token  = current_player.player_token
+              input_ko = false
+          else
+              puts "Case déjà occupée. Réessayes avec la bonne case !"
+          end
+      when "B3"
+          if board.ary_boardcase[5].token == '.'
+              board.ary_boardcase[5].token  = current_player.player_token
+              input_ko = false
+          else
+              puts "Case déjà occupée. Réessayes avec la bonne case !"
+          end
+      when "C1"
+          if board.ary_boardcase[6].token == '.'
+              board.ary_boardcase[6].token  = current_player.player_token
+              input_ko = false
+          else
+              puts "Case déjà occupée. Réessayes avec la bonne case !"
+          end
+      when "C2"
+          if board.ary_boardcase[7].token == '.'
+              board.ary_boardcase[7].token  = current_player.player_token
+              input_ko = false
+          else
+              puts "Case déjà occupée. Réessayes avec la bonne case !"
+          end
+      when "C3"
+          if board.ary_boardcase[8].token =='.'
+              board.ary_boardcase[8].token  = current_player.player_token
+              input_ko = false
+          else
+              puts "Case déjà occupée. Réessayes avec la bonne case !"
+          end
+      else 
+          puts "erreur de case"
+      end
     end
-binding.pry
 	end
 
-	def victory?
+	def victory?(board)
 		#TO DO : une méthode qui vérifie le plateau et indique s'il y a un vainqueur ou match nul
+		
+		# test combinaison horizontale
+		# si cases sont identiques
+		if board.ary_boardcase[0].token == 'X' && board.ary_boardcase[1].token == 'X' && board.ary_boardcase[2].token == 'X'
+			return true
+		end
+		if board.ary_boardcase[0].token == 'O' && board.ary_boardcase[1].token == 'O' && board.ary_boardcase[2].token == 'O'
+			return true
+		end
+		if board.ary_boardcase[3].token == 'X' && board.ary_boardcase[4].token == 'X' && board.ary_boardcase[5].token == 'X'
+			return true
+		end
+		if board.ary_boardcase[3].token == 'O' && board.ary_boardcase[4].token == 'O' && board.ary_boardcase[5].token == 'O'
+			return true
+		end
+		if board.ary_boardcase[6].token == 'X' && board.ary_boardcase[7].token == 'X' && board.ary_boardcase[8].token == 'X'
+			return true
+		end
+		if board.ary_boardcase[6].token == 'O' && board.ary_boardcase[7].token == 'O' && board.ary_boardcase[8].token == 'O'
+			return true
+		end
+
+		# test combinaison verticale
+		# si cases sont identiques
+		if board.ary_boardcase[0].token == 'X' && board.ary_boardcase[3].token == 'X' && board.ary_boardcase[6].token == 'X'
+			return true
+		end
+		if board.ary_boardcase[0].token == 'O' && board.ary_boardcase[3].token == 'O' && board.ary_boardcase[6].token == 'O'
+			return true
+		end
+		if board.ary_boardcase[1].token == 'X' && board.ary_boardcase[4].token == 'X' && board.ary_boardcase[7].token == 'X'
+			return true
+		end
+		if board.ary_boardcase[1].token == 'O' && board.ary_boardcase[4].token == 'O' && board.ary_boardcase[7].token == 'O'
+			return true
+		end
+		if board.ary_boardcase[2].token == 'X' && board.ary_boardcase[5].token == 'X' && board.ary_boardcase[8].token == 'X'
+			return true
+		end
+		if board.ary_boardcase[2].token == 'O' && board.ary_boardcase[5].token == 'O' && board.ary_boardcase[8].token == 'O'
+			return true
+		end
+
+		# test combinaison diagonale
+		# si cases sont identiques
+		if board.ary_boardcase[0].token == 'X' && board.ary_boardcase[4].token == 'X' && board.ary_boardcase[8].token == 'X'
+			return true
+		end
+		if board.ary_boardcase[0].token == 'O' && board.ary_boardcase[4].token == 'O' && board.ary_boardcase[8].token == 'O'
+			return true
+		end
+		if board.ary_boardcase[2].token == 'X' && board.ary_boardcase[4].token == 'X' && board.ary_boardcase[6].token == 'X'
+			return true
+		end
+		if board.ary_boardcase[2].token == 'O' && board.ary_boardcase[4].token == 'O' && board.ary_boardcase[6].token == 'O'
+			return true
+		end
+
 	end
 end

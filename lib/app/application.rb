@@ -8,12 +8,18 @@ class Application
 
   def initialize
 
-    @game = Game.new
-    # boucle à 9 tours
-    @game.turn
+  @game = Game.new
+  
+  # boucle à 9 tours
     
+  @game.status == 'on going'
+  @game.turn
+  @game.game_end
+  @game.new_round
 
-    
+
+
+
   
 
   end
