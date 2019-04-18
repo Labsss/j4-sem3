@@ -7,7 +7,7 @@ class Game
     attr_accessor :current_player, :status, :ary_player, :board
 
   def initialize
-    #TO DO : créé 2 joueurs, créé un board, met le status à "on going", défini un current_player
+    # création 2 joueurs, créé un board, met le status à "on going", défini un current_player
     @player_1 = Player.new
     @player_2 = Player.new
     @ary_player = [@player_1,@player_2]
@@ -26,7 +26,7 @@ class Game
     @player_2.show_state
     # init du damier
     @board = Board.new
-    #affiche le damier
+    # affiche le damier
     Show.new.show_board(@board)
   end
 

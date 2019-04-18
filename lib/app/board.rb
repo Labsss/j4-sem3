@@ -2,7 +2,7 @@
 require_relative 'board_case'
 
 class Board
-	#Optionnellement on peut aussi lui rajouter un autre sous le nom @count_turn pour compter le nombre de coups joué
+
 	attr_accessor :ary_boardcase
 
 	def initialize
