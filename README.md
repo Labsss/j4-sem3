@@ -23,17 +23,17 @@ $ cd sem3j4
 $ bundle install
 ```
 
-
-
 ### Example
 Few instructions to begin to play:
-- 
+- run the app:
 
 ```
-
+$ ruby app.rb
 ```
+- launch the method: Application.new.perform
+- launch game methods
 
 
 ### Miscellaneous
-
+- no test today, it' a shame !!
 
