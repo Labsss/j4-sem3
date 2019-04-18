@@ -9,12 +9,15 @@ class Application
   def initialize
     @game = Game.new
     # initialisation d'une partie
-    @game.turn
-    # tour des joueurs
-    @game.game_end
-    # Message de fin de jeu
-    @game.new_round
-    #demande de rejouer ou partir
+    while @game.status == 'on going'
+      @game.turn
+      # tour des joueurs
+      @game.game_end
+      # Message de fin de jeu
+      @game.new_round
+      #demande de rejouer ou partir
+
+    end
 
   end
 end

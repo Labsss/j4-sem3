@@ -1,9 +1,9 @@
 require_relative 'board'
-require_relative 'show'
+require 'view/show'
 require_relative 'player'
 
+
 class Game
-  #TO DO : la classe a plusieurs attr_accessor: le current_player (égal à un objet Player), le status (en cours, nul ou un objet Player s'il gagne), le Board et un array contenant les 2 joueurs.
     attr_accessor :current_player, :status, :ary_player, :board
 
   def initialize
@@ -40,23 +40,28 @@ class Game
   end
 
   def new_round
-    # TO DO : relance une partie en initialisant un nouveau board mais en gardant les mêmes joueurs.
-
-    puts "Voulez-vous faire une nouvelle partie (O/N) ?"
+    print "Voulez-vous faire une nouvelle partie (O/N) ? "
     choice = gets.chomp.upcase
-    until choice == 'O' || choice == 'N' 
-      case choice
-      when 'O'
+    while choice != 'O' || choice != 'N' 
+      if choice == 'O'
         @board = Board.new
-      when 'N'
+        @status = "on going"
+        puts '-' * 20
+        p "On the road again, same players, shoot again"
+        p "Commençons une nouvelle partie !"
+        Show.new.show_board(@board)
+        break
+      elsif choice == 'N'
         puts "Ok, bye"
         exit
-      else 
-        puts "Choix erroné. Voulez-vous faire une nouvelle partie (O/N) ?"
-        choice = gets.chomp.upcase
       end
-    end
 
+      print "Choix erroné. Voulez-vous faire une nouvelle partie (O/N) ? "
+      choice = gets.chomp.upcase
+
+    end 
+    puts choice
+    p @status
   end
 
   def game_end
