@@ -14,12 +14,24 @@ class Game
     @player_1.show_state
     @player_2.show_state
 
-    damier = Board.new
-    Show.new.show_board(damier)
+    @board = Board.new
+    Show.new.show_board(@board)
   end
 
   def turn
-    #TO DO : méthode faisant appelle aux méthodes des autres classes (notamment à l'instance de Board). Elle affiche le plateau, demande au joueur ce qu'il joue, vérifie si un joueur a gagné, passe au joueur suivant si la partie n'est pas finie.
+    #TO DO : méthode faisant appelle aux méthodes des autres classes (notamment à l'instance de Board). 
+    #Elle affiche le plateau, demande au joueur ce qu'il joue, vérifie si un joueur a gagné, 
+    #passe au joueur suivant si la partie n'est pas finie.
+    #Show.show_board(@board)
+
+    # a faire 9 fois
+    @board.play_turn(@board, @player_1)
+    # check winner
+    Show.show_board(@board)
+    @board.play_turn(@board, @player_2)
+
+
+
   end
 
   def new_round

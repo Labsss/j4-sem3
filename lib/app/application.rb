@@ -9,7 +9,9 @@ class Application
   def initialize
 
     @game = Game.new
-
+    # boucle à 9 tours
+    @game.turn
+    
 
     
   
